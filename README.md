@@ -1,45 +1,44 @@
-# ⚡ AI Brand Voice & Marketing Content Generator
+# 🌾 AgriGuard AI: Climate-Smart Advisory System
 
-An intelligent marketing content creation suite powered by **Google Gemini 3.6 Flash**, **Streamlit**, and **SQLite**.
 
+AgriGuard AI is an end-to-end agricultural intelligence platform engineered to provide smallholder farmers, extension officers, and agricultural researchers in India with data-driven, climate-adaptive farming recommendations. The system integrates ensemble LLMs, heuristic soil analysis engines, real-time meteorological APIs, and multi-language support.
 ---
 
-## 📌 Project Overview
-The **AI Brand Voice Generator** helps marketers, founders, and content creators analyze raw sample copy to extract brand personality (tone, vocabulary, emotional rhythm) and instantly generate tailored, multi-format marketing assets (Social Posts, Emails, Taglines, Ad Headlines, Blog Intros).
+## 🛠️🚀 Key Features
 
+Hybrid AI Ensemble: Synthesizes insights from fine-tuned T5-PEFT (Agriculture Expert), Climate-LoRA (Drought & Risk Specialist), Ollama (Gemma 3 local inference), and Groq Factual Synthesis.
+
+Heuristic Scoring & Soil Analysis: Evaluates NPK nutrient levels, soil pH, and environmental parameters to generate crop suitability and risk scores.
+
+Weather & Climate Intelligence: Integrates OpenMeteo and NASA POWER APIs for 7-day weather forecasts, temperature trend analysis, and historical precipitation patterns.
+
+Multilingual & Voice Support: Generates advisories in 6 languages (Hindi, Tamil, Telugu, Marathi, Punjabi, English) with under-1-minute audio summarization.
+
+Audit Trail & Export Module: Logs historical query data with interactive filtering and one-click JSON/CSV dataset exporting.
 ---
 
-## 🛠️ Key Technical Capabilities
+## 🔮Repository Structure
 
-- **Style & Brand Voice Learning**: Analyzes raw sample text to extract core brand DNA and codify it into a reusable System Prompt Template.
-- **Few-Shot Multi-Format Generation**: High-converting, few-shot prompt engineering for 5 distinct content formats:
-  - 📲 **Social Media Posts**: Includes hooks, emojis, call-to-actions, and targeted hashtags.
-  - 📧 **Marketing Emails**: Structured explicitly with `Subject:`, `Greeting`, `Body`, `Sign-off`, and CTAs.
-  - 🏷️ **Taglines & Slogans**: Concise, punchy, memorable lines (<8 words).
-  - 🎯 **Ad Headlines**: High-converting, benefit-driven headlines (<10 words).
-  - 📝 **Blog Intros**: Captivating hooks with smooth narrative transitions.
-- **Strict Output Grounding**: System instructions eliminate conversational meta-talk (e.g. *"Here is your post:"*), producing direct marketing copy.
-- **Feedback & Revision Loop**: Interactive feedback section allowing users to iterate and refine generated text with Gemini AI.
-- **Relational Persistence (SQLite)**: Full 6-table ER diagram schema (`USER_ACCOUNT`, `BRAND_PROFILE`, `SAMPLE_TEXT`, `CONTENT_REQUEST`, `GENERATED_CONTENT`, `CONTENT_REFINEMENT`) with foreign key constraints.
-- **Modern UI/UX**: Streamlit dashboard with custom CSS themes, gradient header, modular feature cards, hover animations, and one-click clipboard copying (`pyperclip`).
-
----
-
-## 🔮 Future Scope
-
-- 🌐 **Multilingual Voice Support**: Auto-translate and adapt brand voices for international markets.
-- 📊 **Automated Campaign Analytics**: Track engagement metrics and conversion rates per brand profile.
-- 🎯 **Industry-Specific Fine-Tuning**: Pre-trained voice profiles for specialized verticals (Healthcare, Legal, SaaS, E-commerce).
-
----
+AgriGuard-AI/
+├── src/
+│   ├── pipeline/
+│   │   ├── e2e_workflow.py       # Master pipeline validator & integration test
+│   │   └── scoring_engine.py     # Heuristic scoring & soil NPK analysis
+│   ├── ui/
+│   │   ├── history.py            # Audit trail & CSV/JSON export module
+│   │   └── conclusion.py         # System summary & roadmap UI view
+│   └── utils/
+│       └── weather_api.py        # OpenMeteo & NASA POWER integration
+├── tests/                        # Pytest suite for core pipeline modules
+├── app.py                        # Streamlit main entry point
+├── Dockerfile                    # Containerization configuration
+├── docker-compose.yml            # Multi-service deployment setup
+├── requirements.txt              # Project dependencies
+└── README.md                     # Project documentation
 
 ## 💻 Tech Stack
 
-- **AI Model**: Google Gemini 3.6 Flash (`gemini-3.6-flash`)
-- **Frontend**: Streamlit, Custom HTML/CSS
-- **Backend / Logic**: Python 3.9+, `google-generativeai`, `google-genai`
-- **Database**: SQLite3
-- **Utilities**: `python-dotenv`, `pyperclip`
+- CategoryComponent / TechnologiesAI & Ensemble ModelsT5-PEFT (Agriculture Expert), Climate-LoRA (Drought Specialist), Ollama (Gemma 3 local LLM), Groq Factual SynthesisFrontend & UIStreamlit dashboard, Plotly (interactive charts, radar profiles, trend visualizations)Backend & Data ProcessingPython 3.10+, Pandas, Heuristic Soil NPK & pH Scoring EngineData & RAG PipelineDomain-specific RAG retrieval engine, 10-year historical agricultural databaseExternal APIsOpenMeteo API (7-day weather forecast), NASA POWER API (historical climate data)Audio & MultilingualMultilingual Translation Engine (Hindi, Tamil, Telugu, Marathi, Punjabi, English), Audio Summarization engine (<1 min)DevOps & TestingDocker, Docker Compose, Pytest
 
 ---
 
@@ -47,25 +46,32 @@ The **AI Brand Voice Generator** helps marketers, founders, and content creators
 
 1. **Clone the repository**:
    ```bash
-   git clone https://github.com/niketsah007/AI-ML-and-GEN-AI-Track-Project-Template
-   cd AI-ML-and-GEN-AI-Track-Project-Template
-   ```
+   # Clone the repository
+git clone https://github.com/singhrawatgaurav38-ux/AgriGuard-AIxyz
 
-2. **Install dependencies**:
-   ```bash
-   pip install -r requirements.txt
-   ```
+# Navigate into the project directory
+cd AgriGuard-AIxyz
 
-3. **Set up Environment Variables**:
-   Create a `.env` file in the root directory:
-   ```env
-   GEMINI_API_KEY=your_gemini_api_key_here
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # On Windows: venv\Scripts\activate
+
+   ```
+# Create module files
+touch src/pipeline/__init__.py src/pipeline/e2e_workflow.py src/pipeline/scoring_engine.py
+touch src/ui/__init__.py src/ui/history.py src/ui/conclusion.py
+touch src/utils/__init__.py src/utils/weather_api.py
+   ```
+# Install project dependencies
+pip install -r requirements.txt
+
+
    ```
 
 4. **Initialize Database & Run Application**:
    ```bash
-   python database.py
-   python -m streamlit run app.py
+python src/db/database.py
+streamlit run app.py
    ```
-
-5. Access the app in your browser at `http://localhost:8501`.
+# Launch the application
+streamlit run app.py
